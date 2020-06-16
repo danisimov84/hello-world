@@ -30,7 +30,7 @@ jobs:
           tags: latest-${{ steps.vars.outputs.sha_short }}
 
       - name: update current version
-        run: sed -i '16s/latest-[/d/w]*/latest-${{ steps.vars.outputs.sha_short }}/' values.yaml
+        run: sed -i '16s/latest-[0-9a-z]*/latest-${{ steps.vars.outputs.sha_short }}/' values.yaml
 
       - name: setup git config
         if: "success() && github.ref == 'refs/heads/master' "
