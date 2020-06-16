@@ -30,12 +30,12 @@ jobs:
           tags: latest-${{ steps.vars.outputs.sha_short }}
 
       - name: update current version
-        run: sed -i '18s/latest-[/d/w]*/latest-${{ steps.vars.outputs.sha_short }}/' values.yaml
+        run: sed -i '16s/latest-[/d/w]*/latest-${{ steps.vars.outputs.sha_short }}/' values.yaml
 
       - name: commit & push changes
         if: "success() && github.ref == 'refs/heads/master' "
         run: |
-          git remote set-url origin ${{ secrets.ssh }}
+          git remote set-url origin ${{ secrets.SSH }}
           git status
           git add .
           git commit -m "Update tag version in values.yaml"
