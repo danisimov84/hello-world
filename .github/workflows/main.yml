@@ -32,12 +32,15 @@ jobs:
       - name: update current version
         run: sed -i '16s/latest-[/d/w]*/latest-${{ steps.vars.outputs.sha_short }}/' values.yaml
 
-      - name: commit & push changes
+      - name: setup git config
         if: "success() && github.ref == 'refs/heads/master' "
         run: |
-          git remote set-url origin ${{ secrets.SSH }}
-          git status
-          git add .
+          git config user.name "Dmytro Anisimov"
+          git config user.email "dmytro.anisimov@globallogic.com"
+          git add ./values.yaml
           git commit -m "Update tag version in values.yaml"
-          git fetch origin master
-          git push origin HEAD:master
+
+      - name: commit & push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
