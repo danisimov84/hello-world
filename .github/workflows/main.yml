@@ -1,0 +1,30 @@
+name: JOBS-CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: checkout
+        uses: actions/checkout@v1
+        
+      - name: d login
+        if: "success() && github.ref == 'refs/heads/master' "
+        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Declare SHA vars to use on other actions
+        id: vars
+        shell: bash
+        run: |
+          echo "GITHUB_SHA: ${GITHUB_SHA}"
+          echo "::set-output name=sha_short::${GITHUB_SHA::7}"
+        
+      - name: d build
+        uses: docker/build-push-action@v1
+        if: "success() && github.ref == 'refs/heads/master' "
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          tags: latest-${{ steps.vars.outputs.sha_short }}
