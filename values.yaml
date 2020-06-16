@@ -1,0 +1,97 @@
+# Default values for soccer-helm.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+main:
+  image:
+    repository: busybox
+    tag: "latest"
+rsync:
+  image:
+    repository: google/cloud-sdk
+    tag: "275.0.0-alpine"
+processor:
+  image:
+    repository: glowtools/soccer
+    tag: latest-2728ca6
+code:
+  image:
+    repository: glowtools/soccer-code
+    tag: latest-c50b0da
+metrics:
+  image:
+    repository: glowtools/soccermetrics
+    tag: "latest-990f291"
+volumes:
+  dataInput:
+    claimName: sportradar-pvc-input
+    mountPath: /tmp/data/input
+  dataOutput:
+    claimName: sportradar-pvc-output
+    mountPath: /tmp/data/output
+secrets:
+  dataParams:
+    secretName: data-params
+    mountPath: function/config.json
+  metricsParams:
+    secretName: metrics-params
+    mountPath: /tmp/data/conf
+  dataSecret:
+    secretName: storage-secret
+    secretFile: secret
+    mountPath: /tmp/data/secrets
+  dataCode:
+    secretName: soccer-code
+    mountPath: function/handler.py
+  metricsCode:
+    secretName: metrics-code
+    mountPath: /tmp/data/code
+  gcpAuth:
+    secretName: gcp-sa
+    mountPath: /tmp/data/auth
+  gsutilConf:
+    secretName: gsutil-conf
+    mountPath: /tmp
+debug:
+  param: ""
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: false
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+podAnnotations: {}
+podSecurityContext: {}
+# fsGroup: 2000
+
+securityContext: {}
+# capabilities:
+#   drop:
+#   - ALL
+# readOnlyRootFilesystem: true
+# runAsNonRoot: true
+# runAsUser: 1000
+
+resources: {}
+# We usually recommend not to specify default resources and to leave this as a conscious
+# choice for the user. This also increases chances charts run on environments with little
+# resources, such as Minikube. If you do want to specify resources, uncomment the following
+# lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+# limits:
+#   cpu: 100m
+#   memory: 128Mi
+# requests:
+#   cpu: 100m
+#   memory: 128Mi
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+nodeSelector: {}
+tolerations: []
+affinity: {}
