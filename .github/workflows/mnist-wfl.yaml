@@ -30,7 +30,7 @@ jobs:
         if: "success() && github.ref == 'refs/heads/master' "
         with: 
           cmd: yq w -i mnist/mnist.yaml spec.image "danisimov84/mnist:latest-${{ steps.vars.outputs.sha_short }}"
-          cmd: yq w -i mnist.yml functions.mnist.image "danisimov84/mnist:latest-${{ steps.vars.outputs.sha_short }}"
+          # cmd: yq w -i mnist.yml functions.mnist.image "danisimov84/mnist:latest-${{ steps.vars.outputs.sha_short }}"
 
       - name: OpenFaaS build and push
         uses: mrsimpson/action-openfaas-build@0.3.0     
