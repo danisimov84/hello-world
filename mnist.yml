@@ -6,7 +6,7 @@ functions:
   mnist:
     lang: python3-ml
     handler: ./mnist
-    image: danisimov84/mnist:latest-6c606a2
+    image: danisimov84/mnist:latest
     environment:
       write_debug: true
       read_timeout: "1m"
