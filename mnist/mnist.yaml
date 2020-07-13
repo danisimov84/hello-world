@@ -1,4 +1,3 @@
----
 apiVersion: openfaas.com/v1alpha2
 kind: Function
 metadata:
@@ -6,11 +5,10 @@ metadata:
   namespace: openfaas-fn
 spec:
   name: mnist
-  image: danisimov84/mnist:latest
+  image: danisimov84/mnist:latest-a992394
   environment:
     batch_size: "128"
     exec_timeout: 20m
     read_timeout: 1m
     write_debug: "true"
     write_timeout: 1m
-
