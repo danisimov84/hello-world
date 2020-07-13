@@ -25,7 +25,7 @@ jobs:
           echo "::set-output name=sha_short::${GITHUB_SHA::7}"
 
       - name: OpenFaaS build and push
-        uses: mrsimpson/action-openfaas-build@master
+        uses: mrsimpson/action-openfaas-build@0.3.0     
         with:
           stack-file: mnist.yml
           docker-username: ${{ secrets.DOCKER_USERNAME }}
