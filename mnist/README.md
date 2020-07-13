@@ -6,7 +6,7 @@ This article provides an example of a common task in ML. The dataset is the MNIS
 
 1. Pull templates  
 ```
-https://github.com/glowtools/sportradar/tree/develop/template/python3-ml
+https://github.com/danisimov84/hello-world/tree/master/template/python3-ml
 ```
 2. Create a service entity  
 ```
