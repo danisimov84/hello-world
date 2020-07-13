@@ -1,6 +1,7 @@
 ![mnist](https://upload.wikimedia.org/wikipedia/commons/2/27/MnistExamples.png)
 
 # MNIST classifier. 
+test
 
 This article provides an example of a common task in ML. The dataset is the MNIST collection of images with numbers and known labels. The goal is to build a function that trains the algorithm to answer the drawn numbers on images. A convolutional neural network (Keras) is taken as a prediction algorithm. Provided code pulls dataset, trains the model, and estimates well-known losses (cross-entropy and accuracy).
 
