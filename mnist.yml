@@ -6,11 +6,10 @@ functions:
   mnist:
     lang: python3-ml
     handler: ./mnist
-    image: danisimov84/mnist:latest
+    image: danisimov84/mnist:latest-6c606a2
     environment:
-         write_debug: true
-         read_timeout: "1m"
-         write_timeout: "1m"
-         exec_timeout: "20m"
-         batch_size: 128
-
+      write_debug: true
+      read_timeout: "1m"
+      write_timeout: "1m"
+      exec_timeout: "20m"
+      batch_size: 128
