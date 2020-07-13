@@ -35,7 +35,7 @@ functions:
   mnist:
     lang: python3-ml
     handler: ./mnist
-    image: glowtools/mnist:latest
+    image: danisimov84/mnist:latest
     environment:
          write_debug: true
          read_timeout: "1m"
