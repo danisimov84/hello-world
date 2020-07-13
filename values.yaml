@@ -13,7 +13,7 @@ rsync:
 processor:
   image:
     repository: glowtools/soccer
-    tag: latest-a321c71
+    tag: latest-939d4ab
 code:
   image:
     repository: glowtools/soccer-code
