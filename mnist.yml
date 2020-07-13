@@ -1,0 +1,16 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: http://dev.kha.glow.tools
+functions:
+  mnist:
+    lang: python3-ml
+    handler: ./mnist
+    image: danisimov84/mnist:latest
+    environment:
+         write_debug: true
+         read_timeout: "1m"
+         write_timeout: "1m"
+         exec_timeout: "20m"
+         batch_size: 128
+
