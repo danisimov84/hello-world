@@ -33,6 +33,9 @@ COPY requirements.txt   .
 WORKDIR /home/app/function/
 COPY function/requirements.txt	.
 
+RUN pip install --upgrade pip
+RUN pip3 install --upgrade -r requirements.txt --target=/home/app/python
+
 WORKDIR /home/app/
 
 #USER root
