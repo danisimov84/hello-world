@@ -5,7 +5,7 @@ metadata:
   namespace: openfaas-fn
 spec:
   name: mnist
-  image: danisimov84/mnist:latest-a992394
+  image: danisimov84/mnist:latest-e2c45f6
   environment:
     batch_size: "128"
     exec_timeout: 20m
